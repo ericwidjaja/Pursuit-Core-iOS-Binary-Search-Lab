@@ -5,6 +5,19 @@ import Foundation
 // 1. Find if an element is contained within a sorted array in O(log(n)) time.  Do not use recursion.
 
 func binarySearch<T: Comparable>(arr: [T], target: T) -> Bool {
+   
+    var lowerRange = 0
+   var upperRange = arr.count
+   while lowerRange < upperRange {
+       let midIndex = lowerRange + (upperRange - lowerRange) / 2
+       if arr[midIndex] == target {
+           return true
+       } else if arr[midIndex] < target {
+           lowerRange = midIndex + 1
+       } else {
+           upperRange = midIndex
+       }
+   }
     return false
 }
 
